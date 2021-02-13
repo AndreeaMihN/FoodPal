@@ -15,16 +15,16 @@ namespace FoodPal.Providers.DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.3")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("FoodPal.Providers.DomainModels.Catalogue", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -50,7 +50,7 @@ namespace FoodPal.Providers.DataAccess.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int?>("CatalogueId")
                         .HasColumnType("int");
@@ -83,7 +83,7 @@ namespace FoodPal.Providers.DataAccess.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -101,25 +101,25 @@ namespace FoodPal.Providers.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2021, 2, 9, 18, 39, 19, 963, DateTimeKind.Local).AddTicks(7724),
+                            CreatedOn = new DateTime(2021, 2, 8, 21, 40, 46, 408, DateTimeKind.Local).AddTicks(7566),
                             Name = "Dessert"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2021, 2, 9, 18, 39, 19, 963, DateTimeKind.Local).AddTicks(8437),
+                            CreatedOn = new DateTime(2021, 2, 8, 21, 40, 46, 408, DateTimeKind.Local).AddTicks(8457),
                             Name = "Main Course"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2021, 2, 9, 18, 39, 19, 963, DateTimeKind.Local).AddTicks(8456),
+                            CreatedOn = new DateTime(2021, 2, 8, 21, 40, 46, 408, DateTimeKind.Local).AddTicks(8481),
                             Name = "Soups"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2021, 2, 9, 18, 39, 19, 963, DateTimeKind.Local).AddTicks(8462),
+                            CreatedOn = new DateTime(2021, 2, 8, 21, 40, 46, 408, DateTimeKind.Local).AddTicks(8486),
                             Name = "Apperitives"
                         });
                 });
@@ -129,7 +129,7 @@ namespace FoodPal.Providers.DataAccess.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -167,7 +167,7 @@ namespace FoodPal.Providers.DataAccess.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -185,25 +185,25 @@ namespace FoodPal.Providers.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2021, 2, 9, 18, 39, 19, 951, DateTimeKind.Local).AddTicks(7367),
+                            CreatedOn = new DateTime(2021, 2, 8, 21, 40, 46, 400, DateTimeKind.Local).AddTicks(9824),
                             Name = "Mediteranean Cousine"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2021, 2, 9, 18, 39, 19, 961, DateTimeKind.Local).AddTicks(5941),
+                            CreatedOn = new DateTime(2021, 2, 8, 21, 40, 46, 406, DateTimeKind.Local).AddTicks(6954),
                             Name = "Tradinional Romanian Cousine"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2021, 2, 9, 18, 39, 19, 961, DateTimeKind.Local).AddTicks(6015),
+                            CreatedOn = new DateTime(2021, 2, 8, 21, 40, 46, 406, DateTimeKind.Local).AddTicks(7044),
                             Name = "Japonese Cousine"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2021, 2, 9, 18, 39, 19, 961, DateTimeKind.Local).AddTicks(6026),
+                            CreatedOn = new DateTime(2021, 2, 8, 21, 40, 46, 406, DateTimeKind.Local).AddTicks(7054),
                             Name = "Thai Cousine"
                         });
                 });

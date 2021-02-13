@@ -17,7 +17,7 @@ namespace FoodPal.Providers.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-     
+            
             base.OnModelCreating(modelBuilder);
             modelBuilder.SeedDatabase();
         }
