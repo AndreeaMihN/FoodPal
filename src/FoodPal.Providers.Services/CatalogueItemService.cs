@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FoodPal.Providers.DataAccess.UnitOfWork;
+using FoodPal.Providers.DomainModels;
 using FoodPal.Providers.Dtos;
 using FoodPal.Providers.Services.Contracts;
 using System;
@@ -46,7 +47,7 @@ namespace FoodPal.Providers.Services
             var models = await _unitOfWork.CatalogueItemsRepository
                 .GetAllWithProviderAsync(providerId);
 
-            return _mapper.Map<IEnumerable<DomainModels.CatalogueItem>, IEnumerable<CatalogueItemDto>>(models);
+            return _mapper.Map<IEnumerable<CatalogueItem>, IEnumerable<CatalogueItemDto>>(models);
         }
 
         public async Task<CatalogueItemDto> GetCatalogueItemByIdAsync(int catalogueItemId)
@@ -54,8 +55,9 @@ namespace FoodPal.Providers.Services
             var model = await _unitOfWork.CatalogueItemsRepository
                 .GetWithProviderByIdAsync(catalogueItemId);
 
-            return _mapper.Map<DomainModels.CatalogueItem, CatalogueItemDto>(model);
+            return _mapper.Map<CatalogueItem, CatalogueItemDto>(model);
         }
+
 
         public async Task<bool> CatalogueItemExistsAsync(string catalogueItemName, int providerId)
         {
@@ -67,10 +69,24 @@ namespace FoodPal.Providers.Services
             return itemFound != null;
         }
 
-
         public async Task UpdateAsync(CatalogueItemDto catalogueItem)
         {
+            var catalogueItemEntity = await _unitOfWork.CatalogueItemsRepository.SingleOrDefaultAsync(x => x.Id == catalogueItem.Id);
+            var category = await _unitOfWork.CatalogueItemCategoryRepository.SingleOrDefaultAsync(x => x.Id == catalogueItem.Category.Id);
+
+            catalogueItemEntity.Price = catalogueItem.Price;
+            catalogueItemEntity.Name = catalogueItem.Name;
+            category.Name = catalogueItem.Category.Name;
+
             await _unitOfWork.CommitAsync();
+        }
+
+        public async Task<int> GetProviderIdForCatalogItemAsync(NewCatalogueItemDto catalogueItem)
+        {
+            var catalogue = (await _unitOfWork.CatalogueItemsRepository
+               .GetWithCatalogueByIdAsync(catalogueItem.CatalogueId))?.Catalogue;
+
+            return catalogue?.Provider != null ? catalogue.Provider.Id: 0;
         }
     }
 }

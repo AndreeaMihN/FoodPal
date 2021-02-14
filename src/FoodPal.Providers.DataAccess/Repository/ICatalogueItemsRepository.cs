@@ -8,5 +8,6 @@ namespace FoodPal.Providers.DataAccess.Repository
     {
         Task<IEnumerable<CatalogueItem>> GetAllWithProviderAsync(int providerId);
         Task<CatalogueItem> GetWithProviderByIdAsync(int catalogueItemId);
+        Task<CatalogueItem> GetWithCatalogueByIdAsync(int catalogueItemId);
     }
 }

@@ -14,5 +14,7 @@ namespace FoodPal.Providers.DataAccess.UnitOfWork
         ICatalogueItemsRepository CatalogueItemsRepository { get; }
 
         IRepository<Catalogue> CatalogueRepository { get; }
+
+        IRepository<CatalogueItemCategory> CatalogueItemCategoryRepository { get; }
     }
 }

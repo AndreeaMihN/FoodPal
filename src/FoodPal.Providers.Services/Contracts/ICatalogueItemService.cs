@@ -17,5 +17,6 @@ namespace FoodPal.Providers.Services.Contracts
         Task UpdateAsync(CatalogueItemDto catalogueItem);
 
         Task DeleteAsync(int catalogueItemId);
+        Task<int> GetProviderIdForCatalogItemAsync(NewCatalogueItemDto catalogueItem);
     }
 }
